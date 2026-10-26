@@ -15,6 +15,8 @@ CONFIG_NAMES += pc686_rtems5 gr712_rtems5
 CONFIG_NAMES += rpi_vxworks7 rpi_linux
 CONFIG_NAMES += qemu_yocto_linux
 CONFIG_NAMES += osal edslib
+CONFIG_NAMES += aarch64le_qnx_gnu
+CONFIG_NAMES += x86_64_qnx_gnu
 
 # The CFS config names is a subset of the CONFIG_NAMES which use CFS
 # Being in this list means the standard set of CFS options are applied
@@ -33,6 +35,8 @@ O_rpi_linux = build-rpi_linux
 O_qemu_yocto_linux = build-qemu_yocto_linux
 O_osal = build-osal
 O_edslib = build-edslib
+O_aarch64le_qnx_gnu = build-aarch64le_qnx_gnu
+O_x86_64_qnx_gnu = build-x86_64_qnx_gnu
 
 # Define the ARCH used for each target group
 # this is required for everything listed in CFS_CONFIG_NAMES
@@ -43,8 +47,24 @@ ARCH_gr712_rtems5 = leon3-gaisler-rtems5
 ARCH_rpi_vxworks7 = arm-rpi-vxworks7
 ARCH_rpi_linux = arm-rpi-linux
 ARCH_qemu_yocto_linux = riscv64-poky-linux
+ARCH_aarch64le_qnx_gnu = aarch64le-qnx-gnu
+ARCH_x86_64_qnx_gnu = x86_64-qnx-gnu
 
 # Define extra prep options for each target group
+
+##############
+# QNX builds
+##############
+PREP_OPTS_aarch64le_qnx_gnu += -DENABLE_UNIT_TESTS=FALSE
+PREP_OPTS_aarch64le_qnx_gnu += -DSIMULATION=$(ARCH)
+PREP_OPTS_aarch64le_qnx_gnu += -DMISSIONCONFIG=sample
+PREP_OPTS_aarch64le_qnx_gnu += -DCMAKE_BUILD_TYPE=debug
+PLATFORM_aarch64le_qnx_gnu  =  default_cpu1
+PREP_OPTS_x86_64_qnx_gnu += -DENABLE_UNIT_TESTS=TRUE
+PREP_OPTS_x86_64_qnx_gnu += -DSIMULATION=$(ARCH)
+PREP_OPTS_x86_64_qnx_gnu += -DMISSIONCONFIG=sample
+PREP_OPTS_x86_64_qnx_gnu += -DCMAKE_BUILD_TYPE=release
+PLATFORM_x86_64_qnx_gnu  =  default_cpu1
 
 ##############
 # Native build (traditional standard development config)
