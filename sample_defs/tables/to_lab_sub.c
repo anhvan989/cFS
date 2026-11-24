@@ -46,6 +46,7 @@
 #include "sc_msgids.h"
 #include "ds_msgids.h"
 #include "hk_msgids.h"
+#include "cfe_ta_msgids.h"
 
 #ifdef CFS_SBN_ENABLED
 #include "sbn_msgids.h"
@@ -72,6 +73,7 @@ TO_LAB_Subs_t TO_LAB_Subs =
         {CFE_SB_MSGID_WRAP_VALUE(CFE_EVS_LONG_EVENT_MSG_MID), {0, 0}, 16},
         {CFE_SB_MSGID_WRAP_VALUE(CFE_ES_APP_TLM_MID),         {0, 0}, 1},
         {CFE_SB_MSGID_WRAP_VALUE(CFE_ES_MEMSTATS_TLM_MID),    {0, 0}, 1},
+        {CFE_SB_MSGID_WRAP_VALUE(CFE_TA_HK_TLM_MID),          {0, 0}, 1},
 
         /* Other CFS apps */
         {CFE_SB_MSGID_WRAP_VALUE(SAMPLE_APP_HK_TLM_MID), {0, 0}, 1},
